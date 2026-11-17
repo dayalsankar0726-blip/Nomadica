@@ -1,0 +1,188 @@
+/* Product page layout. Fluid columns (no fixed pixel widths), stacked below 1024px,
+   so the page never scrolls sideways on tablets and small laptops. */
+
+.page {
+  background-color: #fbf9f7;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+  overflow-x: clip;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 2rem;
+  box-sizing: border-box;
+}
+
+.gallery {
+  min-width: 0;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.details {
+  min-width: 0;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 4.5rem);
+    padding: 2.5rem 2rem;
+  }
+
+  .gallery {
+    position: sticky;
+    top: 94px;
+    max-width: none;
+    margin: 0;
+  }
+}
+
+/* Gallery: thumbnails under the photo on phones and tablets, beside it on desktop. */
+.galleryInner {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.75rem;
+}
+
+.thumbs {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 2px;
+}
+
+.thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.thumb {
+  flex: 0 0 auto;
+  width: 64px;
+  aspect-ratio: 3 / 4;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  padding: 0;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.mainImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: #f3efe9;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  touch-action: pan-y pinch-zoom;
+}
+
+@media (min-width: 1024px) {
+  .galleryInner {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .thumbs {
+    flex-direction: column;
+    overflow-x: visible;
+    overflow-y: auto;
+    max-height: calc(100vh - 130px);
+    width: 68px;
+    flex-shrink: 0;
+  }
+
+  .mainWrap {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .mainImage {
+    max-height: calc(100vh - 130px);
+  }
+}
+
+.mainWrap {
+  min-width: 0;
+}
+
+/* Sticky Add to Cart on phones. */
+.stickyBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem calc(0.625rem + env(safe-area-inset-bottom));
+  background: #ffffff;
+  border-top: 1px solid rgba(30, 30, 30, 0.12);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 768px) {
+  .stickyBar {
+    display: none;
+  }
+}
+
+.description p,
+.description ul,
+.description ol {
+  margin: 0 0 0.75rem;
+}
+
+.description ul,
+.description ol {
+  padding-left: 1.25rem;
+}
+
+.description ul {
+  list-style: disc;
+}
+
+.description ol {
+  list-style: decimal;
+}
+
+.description a {
+  color: #6b4e37;
+  text-decoration: underline;
+}
+
+.description table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.description th,
+.description td {
+  border: 1px solid rgba(30, 30, 30, 0.15);
+  padding: 0.375rem 0.5rem;
+  text-align: left;
+}
+
+.focusable:focus-visible {
+  outline: 2px solid #6b4e37;
+  outline-offset: 2px;
+}

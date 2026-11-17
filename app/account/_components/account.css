@@ -1,0 +1,617 @@
+/* app/account/_components/account.css
+ * Shared styles for the account pages (sign-in, profile, orders, wishlist).
+ * Every class is prefixed "acct-" so nothing leaks into other pages.
+ */
+
+.acct-auth-page {
+  background-color: #F5F5F0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.acct-auth-card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  padding: 3.5rem 3rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+  width: 100%;
+  max-width: 480px;
+}
+
+.acct-auth-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1E1E1E;
+  margin: 0 0 0.5rem;
+}
+
+.acct-auth-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(30, 30, 30, 0.7);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.acct-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.acct-label {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1E1E1E;
+  margin-bottom: 0.5rem;
+}
+
+.acct-label-optional {
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  color: rgba(30, 30, 30, 0.7);
+}
+
+.acct-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.85rem 1rem;
+  background-color: #F5F3F0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: #1E1E1E;
+  box-sizing: border-box;
+}
+
+.acct-input-boxed {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.acct-input:focus-visible {
+  outline: 2px solid #6B4E37;
+  outline-offset: 1px;
+}
+
+.acct-input[aria-invalid='true'] {
+  border-color: #B91C1C;
+}
+
+.acct-input::placeholder {
+  color: rgba(30, 30, 30, 0.55);
+}
+
+.acct-password-wrap {
+  position: relative;
+}
+
+.acct-password-wrap .acct-input {
+  padding-right: 3rem;
+}
+
+.acct-eye {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(30, 30, 30, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.acct-eye:hover {
+  color: #1E1E1E;
+}
+
+.acct-eye:focus-visible,
+.acct-btn:focus-visible,
+.acct-btn-outline:focus-visible,
+.acct-btn-danger:focus-visible,
+.acct-link:focus-visible,
+.acct-text-btn:focus-visible,
+.acct-icon-btn:focus-visible,
+.acct-tab:focus-visible,
+.acct-tile:focus-visible {
+  outline: 2px solid #6B4E37;
+  outline-offset: 2px;
+}
+
+.acct-btn,
+.acct-btn-outline,
+.acct-btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, opacity 0.2s;
+  box-sizing: border-box;
+}
+
+.acct-btn {
+  background-color: #6B4E37;
+  color: #FFFFFF;
+  border: 1px solid #6B4E37;
+}
+
+.acct-btn:hover:not(:disabled) {
+  background-color: #563E2B;
+}
+
+.acct-btn-outline {
+  background-color: #FFFFFF;
+  color: #1E1E1E;
+  border: 1px solid rgba(30, 30, 30, 0.45);
+}
+
+.acct-btn-outline:hover:not(:disabled) {
+  border-color: #1E1E1E;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.acct-btn-danger {
+  background-color: #B91C1C;
+  color: #FFFFFF;
+  border: 1px solid #B91C1C;
+}
+
+.acct-btn:disabled,
+.acct-btn-outline:disabled,
+.acct-btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.acct-btn-block {
+  width: 100%;
+}
+
+.acct-btn-small {
+  min-height: 40px;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+}
+
+.acct-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: acct-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+.acct-btn-outline .acct-spinner {
+  border-color: rgba(30, 30, 30, 0.2);
+  border-top-color: #1E1E1E;
+}
+
+@keyframes acct-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .acct-spinner {
+    animation-duration: 2.4s;
+  }
+}
+
+.acct-link {
+  color: #6B4E37;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.acct-link:hover {
+  color: #1E1E1E;
+}
+
+.acct-text-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem 0.25rem;
+  min-height: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6B4E37;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.acct-text-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.acct-alert {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  padding: 0.85rem 1rem;
+  border-radius: 4px;
+  margin: 0;
+}
+
+.acct-alert-error {
+  background-color: #FEF2F2;
+  border-left: 4px solid #B91C1C;
+  color: #7F1D1D;
+}
+
+.acct-alert-success {
+  background-color: #F0FDF4;
+  border-left: 4px solid #16A34A;
+  color: #166534;
+}
+
+.acct-alert-info {
+  background-color: #FAF8F5;
+  border-left: 4px solid #6B4E37;
+  color: #1E1E1E;
+}
+
+.acct-field-error {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  color: #B91C1C;
+  margin: 0.4rem 0 0;
+}
+
+.acct-hint {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(30, 30, 30, 0.7);
+  margin: 0.4rem 0 0;
+  line-height: 1.5;
+}
+
+.acct-rules {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+  display: grid;
+  gap: 0.25rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+}
+
+.acct-rules li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(30, 30, 30, 0.7);
+}
+
+.acct-rules li[data-ok='true'] {
+  color: #166534;
+}
+
+.acct-muted {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(30, 30, 30, 0.7);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.acct-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(30, 30, 30, 0.8);
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.acct-checkbox input {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: #6B4E37;
+  flex-shrink: 0;
+}
+
+.acct-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.acct-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ---- Account area (signed in) ---- */
+
+.acct-shell {
+  background-color: #FDFDFD;
+  min-height: 60vh;
+}
+
+.acct-shell-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.acct-shell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.acct-shell-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 500;
+  color: #1E1E1E;
+  margin: 0;
+}
+
+.acct-shell-greeting {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  color: rgba(30, 30, 30, 0.7);
+  margin: 0.35rem 0 0;
+}
+
+.acct-tabs {
+  display: flex;
+  gap: 1.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.acct-tab {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(30, 30, 30, 0.7);
+  padding: 0.75rem 0;
+  border-bottom: 3px solid transparent;
+}
+
+.acct-tab:hover {
+  color: #1E1E1E;
+}
+
+.acct-tab[aria-current='page'] {
+  color: #1E1E1E;
+  border-bottom-color: #6B4E37;
+}
+
+.acct-card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+}
+
+.acct-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.75rem;
+}
+
+.acct-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1E1E1E;
+  margin: 0;
+}
+
+.acct-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.acct-dt {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(30, 30, 30, 0.7);
+  margin: 0 0 0.35rem;
+}
+
+.acct-dd {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  color: #1E1E1E;
+  font-weight: 500;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.acct-icon-btn {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: rgba(30, 30, 30, 0.75);
+  flex-shrink: 0;
+}
+
+.acct-icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  color: #1E1E1E;
+}
+
+.acct-tile {
+  display: block;
+  border-radius: 16px;
+  padding: 1.75rem;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  color: #1E1E1E;
+  border: 1px solid rgba(30, 30, 30, 0.1);
+  box-shadow: 0 12px 32px rgba(30, 30, 30, 0.05);
+  transition: transform 0.2s ease;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.acct-tile:hover {
+  transform: translateY(-3px);
+}
+
+.acct-tile-dark {
+  background-color: #1E1E1E;
+  color: #FFFFFF;
+  border-color: #1E1E1E;
+}
+
+/* ---- Dialogs ---- */
+
+.acct-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.acct-dialog {
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.acct-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.acct-dialog-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1E1E1E;
+  margin: 0;
+}
+
+.acct-dialog-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.acct-dialog-actions > * {
+  flex: 1 1 160px;
+}
+
+@media (max-width: 640px) {
+  .acct-auth-page {
+    padding: 1.5rem 1rem;
+    align-items: flex-start;
+  }
+
+  .acct-auth-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .acct-auth-title {
+    font-size: 1.6rem;
+  }
+
+  .acct-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .acct-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .acct-dialog {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .acct-shell-inner {
+    padding: 1.5rem 1rem 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .acct-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
